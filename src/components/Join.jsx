@@ -60,7 +60,7 @@ export default function Join() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <motion.a
-              href="https://instagram.com"
+              href="https://www.instagram.com/sebs.runningclub?igsh=bmxheTV2cGd6dGxh&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}

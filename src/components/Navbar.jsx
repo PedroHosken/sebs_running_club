@@ -18,6 +18,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   return (
     <motion.nav
       initial={{ y: -80 }}
@@ -27,10 +36,10 @@ export default function Navbar() {
         scrolled ? 'bg-cream/90 backdrop-blur-lg shadow-md shadow-ink/5' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-14 md:h-16">
-        <a href="#" className="flex items-center gap-2">
-          <img src="/sneaker.png" alt="Seb's" className="h-8 md:h-9 w-auto" />
-          <span className="font-poster text-ink text-2xl tracking-wide hidden sm:inline">
+      <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-8 flex items-center justify-between h-14 md:h-16">
+        <a href="#" className="flex items-center gap-2 min-h-[44px] items-center">
+          <img src="/sneaker.png" alt="Seb's" className="h-7 sm:h-8 md:h-9 w-auto" />
+          <span className="font-poster text-ink text-xl sm:text-2xl tracking-wide hidden sm:inline">
             SEB'S
           </span>
         </a>
@@ -40,14 +49,14 @@ export default function Navbar() {
             <a
               key={href}
               href={href}
-              className="font-poster text-ink/40 hover:text-red text-base tracking-wider uppercase transition-colors duration-200"
+              className="font-poster text-ink/40 hover:text-red text-base tracking-wider uppercase transition-colors duration-200 min-h-[44px] flex items-center"
             >
               {label}
             </a>
           ))}
           <a
             href="#vem-correr"
-            className="px-5 py-2 bg-red text-white font-poster text-base tracking-wider uppercase hover:bg-red-light transition-colors duration-200"
+            className="px-5 py-2.5 bg-red text-white font-poster text-base tracking-wider uppercase hover:bg-red-light transition-colors duration-200 min-h-[44px] flex items-center"
           >
             Vem Correr
           </a>
@@ -55,10 +64,10 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-ink/50 hover:text-red transition-colors"
+          className="md:hidden text-ink/50 hover:text-red transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           aria-label="Menu"
         >
-          {open ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
+          {open ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
         </button>
       </div>
 
@@ -68,15 +77,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-cream/98 backdrop-blur-xl overflow-hidden"
+            className="md:hidden bg-cream/98 backdrop-blur-xl overflow-hidden border-t border-ink/5"
           >
-            <div className="px-5 py-5 flex flex-col gap-3">
+            <div className="px-5 py-6 flex flex-col gap-1">
               {links.map(({ href, label }) => (
                 <a
                   key={href}
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="font-poster text-ink/50 hover:text-red text-xl tracking-wider uppercase transition-colors py-1"
+                  className="font-poster text-ink/50 active:text-red text-2xl tracking-wider uppercase transition-colors py-3 min-h-[48px] flex items-center"
                 >
                   {label}
                 </a>
@@ -84,7 +93,7 @@ export default function Navbar() {
               <a
                 href="#vem-correr"
                 onClick={() => setOpen(false)}
-                className="mt-2 text-center py-3 bg-red text-white font-poster text-lg tracking-wider uppercase"
+                className="mt-3 text-center py-4 bg-red text-white font-poster text-xl tracking-wider uppercase active:bg-red-light min-h-[52px] flex items-center justify-center"
               >
                 Vem Correr
               </a>

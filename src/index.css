@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #FAF4E8;
-  --color-paper-dark: #F0E6D0;
-  --color-paper-warm: #F5ECDA;
-  --color-ink: #1A1A2E;
-  --color-ink-light: #3A3A55;
-  --color-red: #C4391D;
-  --color-red-light: #D94E33;
-  --color-red-dark: #A02E16;
+  --color-kraft: #D2C09E;
+  --color-kraft-light: #DFD1B4;
+  --color-kraft-dark: #BCA87C;
+  --color-cream: #EDE4D0;
+  --color-ink: #2A1F14;
+  --color-ink-light: #4A3D2E;
+  --color-red: #B83328;
+  --color-red-light: #D04038;
+  --color-red-dark: #8E2620;
   --color-blue: #3B7DD8;
-  --color-blue-light: #5A96E8;
-  --color-gold: #D4A843;
-  --color-gold-light: #E0BC5E;
-  --color-gold-dark: #B8912E;
+  --color-gold: #C99A2E;
+  --color-gold-light: #DAAE42;
+  --color-warm: #8B6B42;
+  --color-warm-light: #A68458;
 
   --font-heading: 'Outfit', system-ui, sans-serif;
   --font-serif: 'DM Serif Display', Georgia, serif;
@@ -28,7 +29,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-paper);
+  background-color: var(--color-kraft);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,19 +45,20 @@ body {
   overflow-x: hidden;
 }
 
-.paper-bg {
+/* Kraft paper texture */
+.kraft-bg {
   position: relative;
 }
 
-.paper-bg::before {
+.kraft-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 300px 300px;
+  background-size: 400px 400px;
 }
 
 ::-webkit-scrollbar {
@@ -64,11 +66,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-paper);
+  background: var(--color-kraft-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold-dark);
+  background: var(--color-warm);
   border-radius: 4px;
 }
 

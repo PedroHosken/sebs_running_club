@@ -7,8 +7,8 @@ export default function Join() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="vem-correr" className="relative py-20 md:py-28 px-5 md:px-8 bg-paper-warm paper-bg overflow-hidden">
-      {/* Decorative sneaker bg */}
+    <section id="vem-correr" className="relative py-20 md:py-28 px-5 md:px-8 bg-kraft-light kraft-bg overflow-hidden">
+      {/* Faded sneaker watermark */}
       <div className="absolute right-0 bottom-0 opacity-[0.04] pointer-events-none translate-x-1/4 translate-y-1/4">
         <img src="/sneaker.png" alt="" className="w-[500px] rotate-[-15deg]" />
       </div>
@@ -19,19 +19,18 @@ export default function Join() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-block font-heading text-red/30 text-xs font-bold tracking-[0.4em] uppercase mb-5">
+          <span className="inline-block font-heading text-warm text-xs font-bold tracking-[0.4em] uppercase mb-5">
             Próximo Domingo
           </span>
 
-          {/* Big CTA headline */}
-          <h2 className="leading-[0.92] mb-6">
-            <span className="font-heading text-ink text-5xl sm:text-6xl md:text-7xl font-black uppercase block">
+          <h2 className="leading-[0.9] mb-6">
+            <span className="font-heading text-ink text-5xl sm:text-6xl md:text-7xl font-black uppercase block drop-shadow-[2px_2px_0px_rgba(42,31,20,0.1)]">
               VEM
             </span>
             <span className="font-serif text-gold text-3xl sm:text-4xl italic block -mt-1">
               correr com
             </span>
-            <span className="font-heading text-red text-5xl sm:text-6xl md:text-7xl font-black uppercase block">
+            <span className="font-heading text-red text-5xl sm:text-6xl md:text-7xl font-black uppercase block drop-shadow-[2px_2px_0px_rgba(142,38,32,0.2)]">
               A GENTE
             </span>
           </h2>
@@ -47,7 +46,7 @@ export default function Join() {
           />
 
           {/* Info badge */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 bg-ink text-white px-6 py-3 rounded-full font-heading font-bold text-sm tracking-wider uppercase mb-10">
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 bg-ink text-cream px-6 py-3 rounded-full font-heading font-bold text-sm tracking-wider uppercase shadow-lg shadow-ink/15 mb-10">
             <span>Dom</span>
             <span className="text-gold">•</span>
             <span>06:30</span>
@@ -63,7 +62,7 @@ export default function Join() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2.5 px-7 py-3.5 bg-red text-white font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:bg-red-light transition-colors duration-200 w-full sm:w-auto justify-center shadow-md shadow-red/15"
+              className="flex items-center gap-2.5 px-7 py-3.5 bg-red text-cream font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:bg-red-light transition-colors duration-200 w-full sm:w-auto justify-center shadow-lg shadow-red/20"
             >
               <FiInstagram size={17} />
               Instagram
@@ -73,7 +72,7 @@ export default function Join() {
               href="#"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2.5 px-7 py-3.5 border-2 border-ink/15 text-ink font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:border-ink/30 hover:bg-ink/[0.03] transition-all duration-200 w-full sm:w-auto justify-center"
+              className="flex items-center gap-2.5 px-7 py-3.5 border-2 border-ink/15 text-ink font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:border-ink/30 hover:bg-ink/[0.04] transition-all duration-200 w-full sm:w-auto justify-center"
             >
               <FiMessageCircle size={17} />
               WhatsApp

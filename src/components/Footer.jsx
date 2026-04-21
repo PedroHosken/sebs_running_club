@@ -13,26 +13,26 @@ export default function Footer() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <blockquote className="font-serif text-gold/60 text-xl md:text-2xl italic leading-relaxed mb-2">
+          <blockquote className="font-serif text-gold/55 text-xl md:text-2xl italic leading-relaxed mb-2">
             "Every city needs a place like this."
           </blockquote>
-          <p className="font-body text-white/20 text-xs tracking-wider mb-8 font-light">
+          <p className="font-body text-cream/15 text-xs tracking-wider mb-8 font-light">
             — La La Land, 2016
           </p>
 
           <img
             src="/sneaker.png"
             alt="Seb's"
-            className="w-16 md:w-20 mx-auto mb-8 opacity-20 grayscale"
+            className="w-14 md:w-16 mx-auto mb-8 opacity-15 grayscale brightness-200"
           />
 
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-10 bg-white/10" />
-            <span className="text-gold/25 text-[10px]">●</span>
-            <div className="h-px w-10 bg-white/10" />
+            <div className="h-px w-10 bg-cream/8" />
+            <span className="text-gold/20 text-[10px]">●</span>
+            <div className="h-px w-10 bg-cream/8" />
           </div>
 
-          <p className="text-white/15 text-xs font-body font-light">
+          <p className="text-cream/12 text-xs font-body font-light">
             &copy; {new Date().getFullYear()} Seb's Running Club &nbsp;·&nbsp; Belo Horizonte, MG
           </p>
         </motion.div>

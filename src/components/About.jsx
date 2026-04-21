@@ -1,96 +1,62 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { FiUsers, FiStar, FiSunrise } from 'react-icons/fi'
-
-const pillars = [
-  {
-    icon: FiUsers,
-    title: 'Comunidade',
-    text: 'Um espaço de pertencimento para jovens de BH que buscam mais do que um treino — querem fazer parte de algo com personalidade.',
-  },
-  {
-    icon: FiStar,
-    title: 'Estética',
-    text: 'Identidade visual forte inspirada no jazz retrô dos anos 40-50. Art déco aplicado ao movimento. Cada detalhe é intencional.',
-  },
-  {
-    icon: FiSunrise,
-    title: 'Ritual',
-    text: 'Corrida matinal, alongamento coletivo e café pós-corrida. A previsibilidade cria ritual — e ritual cria fidelidade.',
-  },
-]
-
-function FadeIn({ children, delay = 0, className = '' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: 'easeOut' }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 export default function About() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
   return (
-    <section id="sobre" className="relative py-24 md:py-32 px-6">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-dark to-navy pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Section header */}
-        <FadeIn className="text-center mb-16 md:mb-20">
-          <div className="deco-line mb-6">
-            <span className="text-gold text-xs tracking-[0.4em] uppercase font-accent">
-              ✦
-            </span>
-          </div>
-          <h2 className="font-display text-ivory text-4xl md:text-5xl mb-6">
+    <section id="sobre" className="relative py-20 md:py-28 px-5 md:px-8 bg-paper-warm paper-bg">
+      <div ref={ref} className="relative z-10 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <span className="inline-block font-heading text-red/30 text-xs font-bold tracking-[0.4em] uppercase mb-5">
             O Clube
+          </span>
+
+          <h2 className="font-heading text-ink text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-8">
+            Não é só sobre
+            <span className="text-red"> correr.</span><br />
+            É sobre com <span className="font-serif text-gold italic font-normal">quem</span> você corre.
           </h2>
-          <p className="font-accent text-ivory-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            O Seb's Running Club é um clube de corrida matinal em Belo Horizonte,
-            inspirado na estética retrô do{' '}
-            <span className="text-gold italic">Seb's Jazz Club</span> do filme
-            La La Land.
+
+          <p className="font-body text-ink/45 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-6 font-light">
+            O Seb's nasceu pra ser o ponto de encontro dos jovens de BH que querem
+            começar o domingo com energia, gente boa e um café depois da corrida.
           </p>
-        </FadeIn>
 
-        {/* Pillars grid */}
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-          {pillars.map((pillar, i) => (
-            <FadeIn key={pillar.title} delay={i * 0.15}>
-              <div className="text-center group">
-                <div className="w-16 h-16 mx-auto mb-6 border border-gold/30 flex items-center justify-center group-hover:border-gold/60 group-hover:bg-gold/5 transition-all duration-500">
-                  <pillar.icon className="text-gold text-2xl" />
-                </div>
-                <h3 className="font-display text-ivory text-xl mb-3 tracking-wide">
-                  {pillar.title}
-                </h3>
-                <p className="font-body text-ivory-muted/80 text-sm leading-relaxed">
-                  {pillar.text}
-                </p>
+          <p className="font-body text-ink/35 text-base max-w-xl mx-auto leading-relaxed font-light">
+            A gente acredita que um clube de corrida pode ter personalidade — com
+            identidade visual forte, cultura própria e uma vibe que vai além do treino.
+          </p>
+        </motion.div>
+
+        {/* Three pillars */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-14 md:mt-16 grid grid-cols-3 gap-3 md:gap-6 max-w-lg mx-auto"
+        >
+          {[
+            { label: 'Corrida', color: 'text-red', icon: '🏃‍♂️' },
+            { label: 'Café', color: 'text-gold', icon: '☕' },
+            { label: 'Crew', color: 'text-blue', icon: '🤙' },
+          ].map((item) => (
+            <div key={item.label} className="text-center group">
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300 text-2xl md:text-3xl">
+                {item.icon}
               </div>
-            </FadeIn>
+              <span className={`font-heading ${item.color} text-sm md:text-base font-bold tracking-wide uppercase`}>
+                {item.label}
+              </span>
+            </div>
           ))}
-        </div>
-
-        {/* Bottom quote */}
-        <FadeIn delay={0.3} className="mt-20 text-center">
-          <div className="inline-block border-t border-b border-gold/20 py-6 px-8">
-            <p className="font-accent text-ivory-muted italic text-lg md:text-xl">
-              "Não é mais um grupo de corrida — é um clube com{' '}
-              <span className="text-gold">cultura</span>."
-            </p>
-          </div>
-        </FadeIn>
+        </motion.div>
       </div>
     </section>
   )

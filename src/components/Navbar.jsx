@@ -3,97 +3,90 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 
 const links = [
-  { href: '#sobre', label: 'O Clube' },
-  { href: '#formato', label: 'Formato' },
-  { href: '#rotas', label: 'Rotas' },
-  { href: '#cultura', label: 'Cultura' },
+  { href: '#sobre', label: 'Sobre' },
+  { href: '#ritual', label: 'O Ritual' },
+  { href: '#comunidade', label: 'Comunidade' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
   return (
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled
-          ? 'bg-navy/95 backdrop-blur-md shadow-lg shadow-black/20'
-          : 'bg-transparent'
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-400 ${
+        scrolled ? 'bg-paper/90 backdrop-blur-lg shadow-sm' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-3 group">
-          <img
-            src="/logo.png"
-            alt="Seb's Running Club"
-            className="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
-          />
+      <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
+        <a href="#" className="flex items-center gap-2.5 group">
+          <img src="/sneaker.png" alt="Seb's" className="h-9 md:h-10 w-auto" />
+          <span className="font-serif text-ink text-xl md:text-2xl italic hidden sm:inline">
+            Seb's
+          </span>
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {links.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className="font-accent text-ivory/70 hover:text-gold transition-colors duration-300 text-lg tracking-wide"
+              className="font-body text-ink/50 hover:text-red font-medium text-[15px] tracking-wide transition-colors duration-200"
             >
               {label}
             </a>
           ))}
           <a
-            href="#junte-se"
-            className="ml-2 px-5 py-2 border border-gold/60 text-gold font-accent text-lg tracking-widest uppercase hover:bg-gold hover:text-navy-dark transition-all duration-300"
+            href="#vem-correr"
+            className="px-5 py-2.5 bg-red text-white font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:bg-red-light transition-colors duration-200"
           >
-            Junte-se
+            Vem Correr
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-ivory/80 hover:text-gold transition-colors"
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-ink/50 hover:text-red transition-colors p-1"
           aria-label="Menu"
         >
-          {mobileOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
+          {open ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {open && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-dark/98 backdrop-blur-lg border-t border-gold/10 overflow-hidden"
+            className="md:hidden bg-paper/98 backdrop-blur-xl border-t border-ink/5 overflow-hidden"
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
+            <div className="px-5 py-5 flex flex-col gap-3">
               {links.map(({ href, label }) => (
                 <a
                   key={href}
                   href={href}
-                  onClick={() => setMobileOpen(false)}
-                  className="font-accent text-ivory/70 hover:text-gold text-xl tracking-wide transition-colors"
+                  onClick={() => setOpen(false)}
+                  className="font-body text-ink/50 hover:text-red text-lg font-medium transition-colors py-1"
                 >
                   {label}
                 </a>
               ))}
               <a
-                href="#junte-se"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 text-center px-5 py-3 border border-gold/60 text-gold font-accent text-lg tracking-widest uppercase hover:bg-gold hover:text-navy-dark transition-all duration-300"
+                href="#vem-correr"
+                onClick={() => setOpen(false)}
+                className="mt-2 text-center px-5 py-3 bg-red text-white font-heading font-bold text-sm tracking-wider uppercase rounded-full"
               >
-                Junte-se
+                Vem Correr
               </a>
             </div>
           </motion.div>

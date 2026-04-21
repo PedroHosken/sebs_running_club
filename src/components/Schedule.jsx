@@ -1,115 +1,73 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const timeline = [
-  {
-    time: '05:45',
-    title: 'Concentração',
-    desc: 'Encontro no ponto da semana. 15 minutos de tolerância para todo mundo chegar.',
-  },
-  {
-    time: '06:00',
-    title: 'Largada',
-    desc: 'Corrida coletiva. Dois grupos: pace social (~6:30/km) e pace livre.',
-  },
-  {
-    time: '06:45',
-    title: 'Alongamento',
-    desc: 'Retorno e alongamento coletivo de 5 a 10 minutos juntos.',
-  },
-  {
-    time: '07:00',
-    title: 'Café & Brunch',
-    desc: 'Café no estabelecimento parceiro da semana. O ritual pós-corrida.',
-  },
-  {
-    time: '08:00',
-    title: 'Encerramento',
-    desc: 'Cada um segue seu dia com a manhã inteira pela frente.',
-  },
+const steps = [
+  { time: '06:15', title: 'Chegada', desc: 'Encontro no ponto. Aquecimento e bom dia.', icon: '📍', color: 'bg-red' },
+  { time: '06:30', title: 'Largada', desc: 'Corrida coletiva — pace livre ou social.', icon: '🏃', color: 'bg-blue' },
+  { time: '07:15', title: 'Volta', desc: 'Alongamento e aquele papo pós-corrida.', icon: '🙌', color: 'bg-gold' },
+  { time: '07:30', title: 'Café', desc: 'Brunch no parceiro da semana. Sagrado.', icon: '☕', color: 'bg-ink' },
 ]
 
-function TimelineItem({ item, index }) {
+export default function Schedule() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
-      className="relative flex items-start gap-6 md:gap-8"
-    >
-      {/* Time badge */}
-      <div className="shrink-0 w-20 md:w-24 text-right">
-        <span className="font-display text-gold text-2xl md:text-3xl font-semibold">
-          {item.time}
-        </span>
-      </div>
+    <section id="ritual" className="relative py-20 md:py-28 px-5 md:px-8 bg-ink overflow-hidden">
+      {/* Texture */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 300 300%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')] bg-repeat pointer-events-none" />
 
-      {/* Line connector */}
-      <div className="relative flex flex-col items-center shrink-0">
-        <div className="w-3 h-3 border-2 border-gold bg-navy-dark rounded-full z-10" />
-        {index < timeline.length - 1 && (
-          <div className="w-px flex-1 bg-gradient-to-b from-gold/40 to-gold/10 min-h-16" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="pb-10 md:pb-12">
-        <h3 className="font-display text-ivory text-lg md:text-xl mb-1">
-          {item.title}
-        </h3>
-        <p className="font-body text-ivory-muted/70 text-sm md:text-base leading-relaxed max-w-sm">
-          {item.desc}
-        </p>
-      </div>
-    </motion.div>
-  )
-}
-
-export default function Schedule() {
-  const sectionRef = useRef(null)
-  const inView = useInView(sectionRef, { once: true, margin: '-100px' })
-
-  return (
-    <section id="formato" className="relative py-24 md:py-32 px-6">
-      <div className="absolute inset-0 bg-navy-medium pointer-events-none" />
-
-      {/* Decorative pattern */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div ref={ref} className="relative z-10 max-w-4xl mx-auto">
         <motion.div
-          ref={sectionRef}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-16"
         >
-          <div className="deco-line mb-6">
-            <span className="text-gold text-xs tracking-[0.4em] uppercase font-accent">
-              ✦
-            </span>
-          </div>
-          <h2 className="font-display text-ivory text-4xl md:text-5xl mb-4">
-            Formato
+          <span className="inline-block font-heading text-gold/50 text-xs font-bold tracking-[0.4em] uppercase mb-5">
+            Todo Domingo
+          </span>
+          <h2 className="font-heading text-white text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
+            O Ritual
+            <span className="font-serif text-gold italic font-normal"> de domingo</span>
           </h2>
-          <p className="font-accent text-ivory-muted text-lg">
-            Cada saída segue um ritual fixo. Simples, previsível e poderoso.
-          </p>
-          <p className="font-accent text-gold/60 text-base mt-2 tracking-wide">
-            Sábados · Frequência semanal
+          <p className="font-body text-white/30 text-sm sm:text-base mt-3 font-light">
+            Lagoa Seca & Belvedere &nbsp;·&nbsp; Simples e direto.
           </p>
         </motion.div>
 
-        <div className="flex flex-col">
-          {timeline.map((item, i) => (
-            <TimelineItem key={item.time} item={item} index={i} />
+        {/* Steps */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.time}
+              initial={{ opacity: 0, y: 25 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+              className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 md:p-6 text-center hover:bg-white/[0.07] transition-colors duration-300"
+            >
+              <div className="text-3xl mb-3">{step.icon}</div>
+              <div className={`inline-block ${step.color} text-white text-xs font-heading font-bold tracking-wider uppercase px-3 py-1 rounded-full mb-3`}>
+                {step.time}
+              </div>
+              <h3 className="font-heading text-white text-lg font-bold mb-1.5">
+                {step.title}
+              </h3>
+              <p className="font-body text-white/35 text-sm font-light leading-relaxed">
+                {step.desc}
+              </p>
+            </motion.div>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center mt-8 font-body text-white/20 text-sm font-light italic"
+        >
+          Às 08h você já tá livre — com o domingo inteiro pela frente.
+        </motion.p>
       </div>
     </section>
   )

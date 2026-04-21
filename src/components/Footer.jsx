@@ -3,55 +3,39 @@ import { useRef } from 'react'
 
 export default function Footer() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const inView = useInView(ref, { once: true, margin: '-20px' })
 
   return (
-    <footer className="relative py-16 md:py-20 px-6">
-      <div className="absolute inset-0 bg-navy-dark pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-      <div ref={ref} className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Quote */}
+    <footer className="relative py-14 md:py-16 px-5 md:px-8 bg-ink">
+      <div ref={ref} className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-          className="mb-12"
+          transition={{ duration: 0.7 }}
         >
-          <blockquote className="font-display text-gold/80 text-2xl md:text-3xl italic leading-relaxed">
+          <blockquote className="font-serif text-gold/60 text-xl md:text-2xl italic leading-relaxed mb-2">
             "Every city needs a place like this."
           </blockquote>
-          <p className="font-accent text-ivory-muted/40 text-sm mt-4 tracking-wider">
+          <p className="font-body text-white/20 text-xs tracking-wider mb-8 font-light">
             — La La Land, 2016
           </p>
+
+          <img
+            src="/sneaker.png"
+            alt="Seb's"
+            className="w-16 md:w-20 mx-auto mb-8 opacity-20 grayscale"
+          />
+
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-10 bg-white/10" />
+            <span className="text-gold/25 text-[10px]">●</span>
+            <div className="h-px w-10 bg-white/10" />
+          </div>
+
+          <p className="text-white/15 text-xs font-body font-light">
+            &copy; {new Date().getFullYear()} Seb's Running Club &nbsp;·&nbsp; Belo Horizonte, MG
+          </p>
         </motion.div>
-
-        {/* Logo */}
-        <motion.img
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 0.4 } : {}}
-          transition={{ duration: 1, delay: 0.2 }}
-          src="/logo.png"
-          alt="Seb's Running Club"
-          className="w-24 mx-auto mb-8"
-        />
-
-        {/* Divider */}
-        <div className="section-divider mb-8">
-          <span className="text-gold/30 text-xs">✦</span>
-        </div>
-
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-ivory-muted/30 text-xs font-body">
-          <p>
-            &copy; {new Date().getFullYear()} Seb's Running Club. Belo
-            Horizonte, MG.
-          </p>
-          <p className="font-accent tracking-wider">
-            Est. 2025 &nbsp;·&nbsp; Corrida &nbsp;·&nbsp; Comunidade
-            &nbsp;·&nbsp; Cultura
-          </p>
-        </div>
       </div>
     </footer>
   )

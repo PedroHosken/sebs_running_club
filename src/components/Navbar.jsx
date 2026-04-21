@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 
 const links = [
-  { href: '#sobre', label: 'Sobre' },
+  { href: '#sobre', label: 'O Clube' },
   { href: '#ritual', label: 'O Ritual' },
-  { href: '#comunidade', label: 'Crew' },
+  { href: '#crew', label: 'A Crew' },
 ]
 
 export default function Navbar() {
@@ -22,34 +22,32 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-400 ${
-        scrolled
-          ? 'bg-kraft/92 backdrop-blur-lg shadow-md shadow-ink/5'
-          : 'bg-transparent'
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled ? 'bg-cream/90 backdrop-blur-lg shadow-md shadow-ink/5' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
-        <a href="#" className="flex items-center gap-2.5 group">
-          <img src="/sneaker.png" alt="Seb's" className="h-9 md:h-10 w-auto" />
-          <span className="font-serif text-ink text-xl md:text-2xl italic hidden sm:inline">
-            Seb's
+      <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-14 md:h-16">
+        <a href="#" className="flex items-center gap-2">
+          <img src="/sneaker.png" alt="Seb's" className="h-8 md:h-9 w-auto" />
+          <span className="font-poster text-ink text-2xl tracking-wide hidden sm:inline">
+            SEB'S
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-6">
           {links.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className="font-body text-ink/45 hover:text-red font-medium text-[15px] tracking-wide transition-colors duration-200"
+              className="font-poster text-ink/40 hover:text-red text-base tracking-wider uppercase transition-colors duration-200"
             >
               {label}
             </a>
           ))}
           <a
             href="#vem-correr"
-            className="px-5 py-2.5 bg-red text-cream font-heading font-bold text-sm tracking-wider uppercase rounded-full hover:bg-red-light transition-colors duration-200 shadow-sm"
+            className="px-5 py-2 bg-red text-white font-poster text-base tracking-wider uppercase hover:bg-red-light transition-colors duration-200"
           >
             Vem Correr
           </a>
@@ -57,7 +55,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-ink/50 hover:text-red transition-colors p-1"
+          className="md:hidden text-ink/50 hover:text-red transition-colors"
           aria-label="Menu"
         >
           {open ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
@@ -70,7 +68,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-kraft/96 backdrop-blur-xl border-t border-ink/5 overflow-hidden"
+            className="md:hidden bg-cream/98 backdrop-blur-xl overflow-hidden"
           >
             <div className="px-5 py-5 flex flex-col gap-3">
               {links.map(({ href, label }) => (
@@ -78,7 +76,7 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="font-body text-ink/50 hover:text-red text-lg font-medium transition-colors py-1"
+                  className="font-poster text-ink/50 hover:text-red text-xl tracking-wider uppercase transition-colors py-1"
                 >
                   {label}
                 </a>
@@ -86,7 +84,7 @@ export default function Navbar() {
               <a
                 href="#vem-correr"
                 onClick={() => setOpen(false)}
-                className="mt-2 text-center px-5 py-3 bg-red text-cream font-heading font-bold text-sm tracking-wider uppercase rounded-full"
+                className="mt-2 text-center py-3 bg-red text-white font-poster text-lg tracking-wider uppercase"
               >
                 Vem Correr
               </a>

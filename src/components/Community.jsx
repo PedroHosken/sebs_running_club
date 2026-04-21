@@ -7,7 +7,7 @@ const vibes = [
   'Empreendedores e criativos de BH',
   'Quem quer fazer parte de algo autêntico',
   'Quem troca academia por céu aberto',
-  'Gente da Savassi, Belvedere, Lourdes e arredores',
+  'Gente da Savassi, Belvedere, Lourdes e região',
 ]
 
 export default function Community() {
@@ -15,68 +15,73 @@ export default function Community() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="comunidade" className="relative py-20 md:py-28 px-5 md:px-8 bg-kraft kraft-bg">
-      <div ref={ref} className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-14"
-        >
-          <span className="inline-block font-heading text-warm text-xs font-bold tracking-[0.4em] uppercase mb-5">
-            A Crew
-          </span>
-          <h2 className="font-heading text-ink text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-5">
-            Feito pra <span className="text-red">gente</span><br />
-            <span className="font-serif text-gold italic font-normal">como você</span>
-          </h2>
-          <p className="font-body text-warm text-base sm:text-lg max-w-md mx-auto font-light">
-            18 a 32 anos, cheio de energia, buscando mais do que um treino.
-          </p>
-        </motion.div>
+    <section id="crew" className="relative py-20 md:py-28 px-5 md:px-8 bg-cream grain overflow-hidden">
+      <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+          {/* Left — content */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="lg:w-3/5"
+          >
+            <span className="font-poster text-blue text-sm tracking-[0.4em] uppercase block mb-4">
+              A Crew
+            </span>
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid sm:grid-cols-2 gap-3 md:gap-4 max-w-xl mx-auto mb-14"
-        >
-          {vibes.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -8 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.35, delay: 0.25 + i * 0.06 }}
-              className="flex items-center gap-3 bg-kraft-light/80 border border-ink/5 rounded-xl px-4 py-3.5 hover:border-red/15 transition-colors duration-300"
-            >
-              <span className="w-2 h-2 rounded-full bg-red shrink-0" />
-              <span className="font-body text-ink-light text-sm font-medium">{item}</span>
-            </motion.div>
-          ))}
-        </motion.div>
+            <h2 className="font-poster text-ink text-4xl sm:text-5xl md:text-6xl leading-none mb-2">
+              FEITO PRA
+            </h2>
+            <p className="font-serif text-gold italic text-2xl md:text-3xl mb-8">
+              gente como você
+            </p>
 
-        {/* Statement card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="relative bg-ink rounded-2xl p-8 md:p-12 text-center max-w-xl mx-auto overflow-hidden shadow-xl shadow-ink/10"
-        >
-          {/* Corner ornament */}
-          <div className="absolute top-3 right-4 text-gold/15 text-5xl font-serif select-none">"</div>
-          <img
-            src="/sneaker.png"
-            alt=""
-            className="absolute -bottom-4 -right-4 w-28 opacity-[0.06] rotate-[-15deg] pointer-events-none"
-          />
-          <p className="font-heading text-cream text-xl sm:text-2xl md:text-3xl font-black leading-snug mb-3 relative z-10">
-            Não é mais um
-            <span className="text-red"> grupo de corrida.</span>
-          </p>
-          <p className="font-body text-cream/35 text-base font-light relative z-10">
-            É um clube com cultura, estética e gente que se reconhece.
-          </p>
-        </motion.div>
+            <div className="grid sm:grid-cols-2 gap-3 mb-10">
+              {vibes.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.3, delay: 0.2 + i * 0.05 }}
+                  className="flex items-center gap-3 bg-kraft/50 border border-ink/5 px-4 py-3"
+                >
+                  <div className="w-2 h-2 bg-red shrink-0" />
+                  <span className="font-body text-ink-light text-sm font-medium">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Quote card */}
+            <div className="bg-ink p-6 md:p-8 relative overflow-hidden">
+              <span className="absolute -top-2 right-4 font-serif text-gold/10 text-8xl select-none">"</span>
+              <p className="font-poster text-cream text-2xl sm:text-3xl leading-tight mb-2 relative z-10">
+                NÃO É MAIS UM<br />
+                <span className="text-red">GRUPO DE CORRIDA.</span>
+              </p>
+              <p className="font-body text-cream/30 text-sm font-light relative z-10">
+                É um clube com cultura, estética e gente que se reconhece.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right — poster collage */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:w-2/5 shrink-0 hidden lg:block"
+          >
+            <div className="relative">
+              {/* Stacked poster cards */}
+              <div className="bg-cream p-3 shadow-lg shadow-ink/8 rotate-2 mb-4">
+                <img src="/poster-72.png" alt="The 72' Cortez" className="w-full" />
+              </div>
+              <div className="bg-cream p-3 shadow-lg shadow-ink/8 -rotate-1 -mt-8 ml-6">
+                <img src="/poster-gump.png" alt="Forrest Gump" className="w-full" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
